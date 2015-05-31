@@ -13,7 +13,6 @@ module MyEbookPub
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <title>The Selenium Guidebook: How To Use Selenium, successfully</title>
     <style type="text/css">
       @font-face {
         font-family: 'Droid Sans';
@@ -145,7 +144,7 @@ HERE
   end
 
   @renderer_toc         = Redcarpet::Markdown.new(TOCwithChapterNumbering, fenced_code_blocks: true)
-  @renderer_content     = Redcarpet::Markdown.new(HighlightedCopyWithChapterNumbering, fenced_code_blocks: true)
+  @renderer_content     = Redcarpet::Markdown.new(HighlightedCopyWithChapterNumbering, fenced_code_blocks: true, tables: true)
   @renderer_no_frills   = Redcarpet::Markdown.new(CopyWithNoFrills, fenced_code_blocks: true)
 
   def vacuum
