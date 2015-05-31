@@ -155,15 +155,15 @@ HERE
   end
 
   def cover
-    @renderer_no_frills.render( vacuum { File.read("#{@location}/cover.md") })
+    @renderer_no_frills.render(vacuum { File.read("#{@location}/cover.md") })
   end
 
   def acknowledgements
-    @renderer_no_frills.render( vacuum { File.read("#{@location}/acknowledgements.md") })
+    @renderer_no_frills.render(vacuum { File.read("#{@location}/acknowledgements.md") })
   end
 
   def preface
-    @renderer_no_frills.render( vacuum { File.read("#{@location}/preface.md") })
+    @renderer_no_frills.render(vacuum { File.read("#{@location}/preface.md") })
   end
 
   def toc
@@ -188,7 +188,7 @@ HERE
 
   def generate(opts = {}) # to PDF
     @location = opts[:location].nil? ? 'content/chapters' : opts[:location]
-    @content = preface + toc + content
+    @content = cover + preface + toc + content
     html = ERB.new(@template).result(binding)
     product_name = opts[:product_name].nil? ? raise('Product name not specified. Please specify one.') : opts[:product_name]
     case opts[:file_type]
