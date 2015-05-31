@@ -27,6 +27,7 @@ Or install it yourself as:
 # cover.md in ./assets dir
 # font file in ./assets dir (e.g., droid_sans.ttf)
 # preface.md alongside other markdown files
+# create output dir
 
 MyEbookPub.generate(
   product_name: '',
