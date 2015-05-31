@@ -20,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+```ruby
+# content numbered (e.g., 1.md, 10.md, etc.)
+# content lives in ./content/chapters (unless otherwise specified)
+# cover.md in ./assets dir
+# font file in ./assets dir (e.g., droid_sans.ttf)
+# preface.md alongside other markdown files
+
+MyEbookPub.generate(
+  product_name: '',
+  location: '') # if other than ./content/chapters
+)
+```
 
 ## Contributing
 
