@@ -31,7 +31,8 @@ Or install it yourself as:
 
 MyEbookPub.generate(
   product_name: '',
-  location: '') # if other than ./content/chapters
+  location: '', # if other than ./content/chapters
+  file_type: 'html') # Optional. If not specified, PDF will be used
 )
 ```
 
