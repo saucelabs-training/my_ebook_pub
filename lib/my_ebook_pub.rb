@@ -94,14 +94,10 @@ HERE
 
   def raw_content
     content = ""
-    number_of_chapters.times do |chapter|
-      content << File.read("#{@location}/chapters/#{chapter + 1}.md")
+    Dir.glob("#{@location}/chapters/*.md").each do |chapter|
+      content << File.read(chapter)
     end
     content
-  end
-
-  def number_of_chapters
-    Dir.glob("#{@location}/chapters/[0-9].md").count + Dir.glob("#{@location}/chapters/[0-9][0-9].md").count
   end
 
   def content
