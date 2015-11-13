@@ -97,22 +97,23 @@ HERE
     number_of_chapters.times do |chapter|
       content << File.read("#{@location}/chapters/#{chapter + 1}.md")
     end
+    puts content.inspect
     content
   end
 
   def number_of_chapters
-    Dir.glob("#{@location}/[0-9].md").count + Dir.glob("#{@location}/[0-9][0-9].md").count
+    Dir.glob("#{@location}/chapters/[0-9].md").count + Dir.glob("#{@location}/chapters/[0-9][0-9].md").count
   end
 
   def content
     @renderer_content.render(raw_content)
   end
 
-  def generate
+  def generate # to PDF
     @location = 'content'
     @content = cover + preface + toc + content
     html = ERB.new(@template).result(binding)
-    product_name = 'render.pdf'
+    product_name = 'render'
     File.open("output/#{product_name}.pdf", 'w+') do |f|
       f.write(Docverter::Conversion.run do |c|
         c.from    = 'html'
