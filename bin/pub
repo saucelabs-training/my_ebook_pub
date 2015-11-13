@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'my_ebook_pub'
 require 'fileutils'
 
 case ARGV[0]
@@ -16,6 +15,8 @@ when 'new'
                     File.join(Dir.pwd, 'content/assets'))
 when 'generate'
   STDOUT.puts 'Generating PDF to output directory...'
+  require 'my_ebook_pub'
+  MyEbookPub.generate('render.pdf')
 else
   STDOUT.puts <<-EOF
 Please provide command name
