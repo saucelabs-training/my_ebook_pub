@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'my_ebook_pub'
+require 'fileutils'
+
+case ARGV[0]
+when "new"
+  STDOUT.puts "Creating new pub directory structure..."
+  FileUtils.mkpath  'content/assets'
+  FileUtils.mkdir   'content/chapters'
+  FileUtils.mkdir   'output'
+  FileUtils.touch   'content/cover.md'
+  FileUtils.touch   'content/preface.md'
+  FileUtils.touch   'content/chapters/1.md'
+when "generate"
+  STDOUT.puts "Generating PDF to output directory..."
+else
+  STDOUT.puts <<-EOF
+Please provide command name
+
+Usage:
+  pub new
+  pub generate
+EOF
+end

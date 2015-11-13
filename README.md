@@ -1,6 +1,6 @@
 # MyEbookPub
 
-TODO: Write a gem description
+Convert content written in markdown into a polished PDF
 
 ## Installation
 
@@ -20,20 +20,32 @@ Or install it yourself as:
 
 ## Usage
 
+```sh
+```
 
-```ruby
-# content numbered (e.g., 1.md, 10.md, etc.)
-# content lives in ./content/chapters (unless otherwise specified)
-# cover.md in ./assets dir
-# font file in ./assets dir (e.g., droid_sans.ttf)
-# preface.md alongside other markdown files
-# create output dir
+### New
 
-MyEbookPub.generate(
-  product_name: '',
-  location: '', # if other than ./content/chapters
-  file_type: 'html') # Optional. If not specified, PDF will be used
-)
+```sh
+.
+├── Gemfile
+├── content
+│   ├── assets
+│   │   ├── cover-art.png
+│   │   └── droid_sans.ttf
+│   ├── chapters
+│   │   ├── 1.md
+│   │   ├── 10.md
+│   │   └── 2.md
+│   ├── cover.md
+│   └── preface.md
+└── output
+
+4 directories, 8 files
+```
+
+### Generate
+
+```sh
 ```
 
 ## Contributing
