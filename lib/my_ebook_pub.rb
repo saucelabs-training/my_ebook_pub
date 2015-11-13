@@ -95,7 +95,7 @@ HERE
   def raw_content
     content = ""
     number_of_chapters.times do |chapter|
-      content << File.read("#{@location}/#{chapter + 1}.md")
+      content << File.read("#{@location}/chapters/#{chapter + 1}.md")
     end
     content
   end
@@ -109,7 +109,7 @@ HERE
   end
 
   def generate
-    @location = 'content/chapters'
+    @location = 'content'
     @content = cover + preface + toc + content
     html = ERB.new(@template).result(binding)
     product_name = 'render.pdf'
