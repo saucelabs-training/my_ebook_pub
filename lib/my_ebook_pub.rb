@@ -108,28 +108,20 @@ HERE
     @renderer_content.render(raw_content)
   end
 
-  def generate(opts = {}) # to PDF
-    @location = opts[:location].nil? ? 'content/chapters' : opts[:location]
+  def generate
+    @location = 'content/chapters'
     @content = cover + preface + toc + content
     html = ERB.new(@template).result(binding)
-    product_name = opts[:product_name].nil? ? raise('Product name not specified. Please specify one.') : opts[:product_name]
-    case opts[:file_type]
-    when 'html'
-      `rm -rf output/html`
-      `mkdir output/html`
-      File.open("output/html/#{opts[:product_name]}.html", 'w+') { |f| f.write html }
-      `cp assets/* output/html` 
-    else
-      File.open("output/#{product_name}.pdf", 'w+') do |f|
-        f.write(Docverter::Conversion.run do |c|
-          c.from    = 'html'
-          c.to      = 'pdf'
-          c.content = html
-          Dir.glob('assets/*') do |asset|
-            c.add_other_file asset
-          end
-        end)
-      end
+    product_name = 'render.pdf'
+    File.open("output/#{product_name}.pdf", 'w+') do |f|
+      f.write(Docverter::Conversion.run do |c|
+        c.from    = 'html'
+        c.to      = 'pdf'
+        c.content = html
+        Dir.glob('assets/*') do |asset|
+          c.add_other_file asset
+        end
+      end)
     end
   end
 
