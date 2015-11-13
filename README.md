@@ -44,6 +44,25 @@ output
 Your project is ready for content!
 ```
 
+### Writing Content
+
+Content files:
+- live in `content/chapters`
+- can be named with alpha-numeric characters
+- are ordered alphabetically
+
+Table of Contents:
+- are auto-generated with active links
+- are numbered based on the order of files in `content/chapters`
+
+Preface & Cover
+- live in `content`
+- are auto-included with the book rendering
+
+Assets
+- contain the font and styling used for the book
+- can store images to be used in the book (e.g., art for the cover of the book)
+
 ### Generate
 
 ```sh
