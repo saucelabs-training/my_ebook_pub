@@ -15,7 +15,7 @@ when 'new'
                     File.join(Dir.pwd, 'assets'))
   STDOUT.puts Dir.glob('**/*')
   STDOUT.puts 'Your project is ready for content!'
-when 'gen' or 'generate'
+when 'generate', 'gen'
   STDOUT.puts 'Generating PDF to output directory...'
   require 'my_ebook_pub'
   MyEbookPub.generate
