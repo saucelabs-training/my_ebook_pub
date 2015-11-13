@@ -97,7 +97,6 @@ HERE
     number_of_chapters.times do |chapter|
       content << File.read("#{@location}/chapters/#{chapter + 1}.md")
     end
-    puts content.inspect
     content
   end
 
