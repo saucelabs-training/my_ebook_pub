@@ -21,31 +21,35 @@ Or install it yourself as:
 ## Usage
 
 ```sh
+> pub
+Usage:
+  pub new
+  pub generate
 ```
 
 ### New
 
 ```sh
-.
-├── Gemfile
-├── content
-│   ├── assets
-│   │   ├── cover-art.png
-│   │   └── droid_sans.ttf
-│   ├── chapters
-│   │   ├── 1.md
-│   │   ├── 10.md
-│   │   └── 2.md
-│   ├── cover.md
-│   └── preface.md
-└── output
-
-4 directories, 8 files
+> pub new
+Creating new pub directory structure...
+assets
+assets/droid_sans.ttf
+assets/template.erb
+content
+content/chapters
+content/chapters/1.md
+content/cover.md
+content/preface.md
+output
+Your project is ready for content!
 ```
 
 ### Generate
 
 ```sh
+> pub generate
+Generating PDF to output directory...
+Your file is ready. See ./output/render.pdf
 ```
 
 ## Contributing
