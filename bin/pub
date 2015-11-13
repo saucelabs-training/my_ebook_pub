@@ -13,10 +13,13 @@ when 'new'
   FileUtils.mkdir   'assets'
   FileUtils.cp_r(Dir.glob(File.join(File.expand_path(File.dirname(__FILE__)), 'assets', '*')),
                     File.join(Dir.pwd, 'assets'))
-when 'generate'
+  STDOUT.puts Dir.glob('**/*')
+  STDOUT.puts 'Your project is ready for content!'
+when 'gen'
   STDOUT.puts 'Generating PDF to output directory...'
   require 'my_ebook_pub'
   MyEbookPub.generate
+  STDOUT.puts 'Your file is ready. See ./output/render.pdf'
 else
   STDOUT.puts <<-EOF
 Please provide command name
