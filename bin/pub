@@ -3,9 +3,8 @@ require 'fileutils'
 
 def parse_options
   options = ''
-  case ARGV[1]
-  when '-t'
-    options = ARGV[2]
+  if ARGV[1]
+    options = ARGV[1]
   else
     options = 'pdf'
   end
@@ -34,9 +33,10 @@ else
   STDOUT.puts <<-EOF
 Usage:
   pub new
-  pub generate
+  pub generate filetype
 
   options:
-    -t FILE TYPE. Default: pdf (also available, epub and mobi)
+    If no filetype specified, pdf will be used
+    Available file types: pdf, epub, mobi
 EOF
 end
