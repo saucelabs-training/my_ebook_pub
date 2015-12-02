@@ -124,15 +124,16 @@ HERE
       end
     when 'epub'
       File.open("output/#{product_name}.epub", 'w+') do |file|
-      file.write(Docverter::Conversion.run do |c|
-        c.from              = 'markdown'
-        c.to                = 'epub'
-        c.content           = raw_content
-        c.epub_metadata     = 'metadata.xml'
-        c.epub_stylesheet   = 'epub.css'
-        c.add_other_file    'assets/epub.css'
-        c.add_other_file    'assets/metadata.xml'
-      end)
+        file.write(Docverter::Conversion.run do |c|
+          c.from              = 'markdown'
+          c.to                = 'epub'
+          c.content           = raw_content
+          c.epub_metadata     = 'metadata.xml'
+          c.epub_stylesheet   = 'epub.css'
+          c.add_other_file    'assets/epub.css'
+          c.add_other_file    'assets/metadata.xml'
+        end)
+      end
     when 'mobi'
       File.open("output/#{product_name}.mobi", 'w+') do |file|
         file.write(Docverter::Conversion.run do |c|
