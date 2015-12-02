@@ -2,12 +2,12 @@
 require 'fileutils'
 
 def parse_options
-  options = {}
+  options = ''
   case ARGV[1]
   when '-t'
-    options[:t] = ARGV[2]
+    options = ARGV[2]
   else
-    options[:t] = 'pdf'
+    options = 'pdf'
   end
   options
 end
@@ -29,7 +29,7 @@ when 'generate', 'gen'
   STDOUT.puts 'Generating PDF to output directory...'
   require 'my_ebook_pub'
   MyEbookPub.generate parse_options
-  STDOUT.puts 'Your file is ready. See ./output/render.pdf'
+  STDOUT.puts "Your file is ready. See ./output/render.#{parse_options}"
 else
   STDOUT.puts <<-EOF
 Usage:
