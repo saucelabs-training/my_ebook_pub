@@ -24,7 +24,11 @@ Or install it yourself as:
 > pub
 Usage:
   pub new
-  pub generate
+  pub generate filetype
+
+  options:
+    If no filetype specified, pdf will be used
+    Available file types: pdf, epub, mobi
 ```
 
 ### New
@@ -69,6 +73,14 @@ Assets
 > pub generate
 Generating PDF to output directory...
 Your file is ready. See ./output/render.pdf
+
+> pub generate epub
+Generating PDF to output directory...
+Your file is ready. See ./output/render.epub
+
+> pub generate mobi
+Generating PDF to output directory...
+Your file is ready. See ./output/render.mobi
 ```
 
 ## Contributing
