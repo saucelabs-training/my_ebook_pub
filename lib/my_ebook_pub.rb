@@ -104,21 +104,49 @@ HERE
     @renderer_content.render(raw_content)
   end
 
-  def generate # to PDF
+  def generate(file_type)
     @location = 'content'
     @content = cover + preface + toc + content
     html = ERB.new(@template).result(binding)
     product_name = 'render'
-    File.open("output/#{product_name}.pdf", 'w+') do |f|
-      f.write(Docverter::Conversion.run do |c|
-        c.from    = 'html'
-        c.to      = 'pdf'
-        c.content = html
-        Dir.glob('assets/*') do |asset|
-          c.add_other_file asset
-        end
+
+    case file_type
+    when 'pdf'
+      File.open("output/#{product_name}.pdf", 'w+') do |file|
+        file.write(Docverter::Conversion.run do |c|
+          c.from    = 'html'
+          c.to      = 'pdf'
+          c.content = html
+          Dir.glob('assets/*') do |asset|
+            c.add_other_file asset
+          end
+        end)
+      end
+    when 'epub'
+      File.open("output/#{product_name}.epub", 'w+') do |file|
+      file.write(Docverter::Conversion.run do |c|
+        c.from              = 'markdown'
+        c.to                = 'epub'
+        c.content           = raw_content
+        c.epub_metadata     = 'metadata.xml'
+        c.epub_stylesheet   = 'epub.css'
+        c.add_other_file    'assets/epub.css'
+        c.add_other_file    'assets/metadata.xml'
       end)
+    when 'mobi'
+      File.open("output/#{product_name}.mobi", 'w+') do |file|
+        file.write(Docverter::Conversion.run do |c|
+          c.from              = 'markdown'
+          c.to                = 'mobi'
+          c.content           = raw_content
+          c.epub_metadata     = 'metadata.xml'
+          c.epub_stylesheet   = 'epub.css'
+          c.add_other_file    'assets/epub.css'
+          c.add_other_file    'assets/metadata.xml'
+        end)
+      end
     end
+
   end
 
 end
