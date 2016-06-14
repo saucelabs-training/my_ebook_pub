@@ -25,10 +25,10 @@ when 'new'
   STDOUT.puts Dir.glob('**/*')
   STDOUT.puts 'Your project is ready for content!'
 when 'generate', 'gen'
-  STDOUT.puts 'Generating PDF to output directory...'
+  STDOUT.puts 'Generating your draft to the output directory...'
   require 'my_ebook_pub'
   MyEbookPub.generate parse_options
-  STDOUT.puts "Your file is ready. See ./output/render.#{parse_options}"
+  STDOUT.puts "Your file is ready. See ./output/draft.#{parse_options}"
 else
   STDOUT.puts <<-EOF
 Usage:

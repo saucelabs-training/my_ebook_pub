@@ -108,9 +108,13 @@ HERE
     @location = 'content'
     @content = cover + preface + toc + content
     html = ERB.new(@template).result(binding)
-    product_name = 'render'
+    product_name = 'draft'
 
     case file_type
+    when 'html'
+      File.open("output/#{product_name}.html", 'w+') do |file|
+        file.write(html)
+      end
     when 'pdf'
       File.open("output/#{product_name}.pdf", 'w+') do |file|
         file.write(Docverter::Conversion.run do |c|
