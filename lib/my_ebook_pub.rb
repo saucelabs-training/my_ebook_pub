@@ -106,7 +106,7 @@ HERE
 
   def generate(file_type)
     @location = 'content'
-    @content = cover + preface + toc + content
+    @content = cover + preface + acknowledgements + toc + content
     html = ERB.new(@template).result(binding)
     product_name = 'draft'
 
