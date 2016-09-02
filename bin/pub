@@ -15,9 +15,10 @@ case ARGV[0]
 when 'new'
   STDOUT.puts 'Creating new pub directory structure...'
   FileUtils.mkpath  'content/chapters'
+  FileUtils.touch   'content/acknowledgements.md'
   FileUtils.touch   'content/cover.md'
   FileUtils.touch   'content/preface.md'
-  FileUtils.touch   'content/chapters/1.md'
+  FileUtils.touch   'content/chapters/01.md'
   FileUtils.mkdir   'output'
   FileUtils.mkdir   'assets'
   FileUtils.cp_r(Dir.glob(File.join(File.expand_path(File.dirname(__FILE__)), 'assets', '*')),
