@@ -94,7 +94,7 @@ HERE
 
   def raw_content
     content = ""
-    Dir.glob("#{@location}/chapters/*.md").each do |chapter|
+    Dir.glob("#{@location}/chapters/*.md").sort.each do |chapter|
       content << File.read(chapter)
     end
     content
